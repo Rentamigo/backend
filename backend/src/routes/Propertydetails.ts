@@ -30,6 +30,24 @@ propertyRouter.post("/property", async (req: Request, res: Response) => {
     }
   }
 });
+//route to delete 
+propertyRouter.delete("/property/:id", async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    const deletedProperty = await Property.findByIdAndDelete(id);
+
+    if (!deletedProperty) {
+      return res.status(404).json({ error: "Property not found" });
+    }
+
+    res.status(200).json({ message: "Property deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting property:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 // Route to get a specific property by ID
 propertyRouter.get("/propertyds/:id", async (req: Request, res: Response) => {
   try {
