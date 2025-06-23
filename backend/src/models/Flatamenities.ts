@@ -38,6 +38,13 @@ const FlatAmenitiesSchema = new Schema<IFlatAmenities>(
               "Dining Table",
               "Gas Connection",
               "Play Station",
+              "Light",
+              "Fan",
+              "Geyser",
+              "Chimney",
+              "ExhaustFan",
+              "Kitchencabinet",
+              "TV Unit"
             ].includes(amenity)
           ),
         message: "Invalid amenity provided",
